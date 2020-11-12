@@ -37,15 +37,22 @@ def main():
     response = s.get(url,headers=headers)
     if ("errorCode" in response.text):
         print(response.text)
-    else:
-        description = response.json()['description']
+    elif ("description" in response.text):
+        responseJson = response.json();
+        description = responseJson['description']
         print(f"抽奖获得{description}")
+    else:
+        print(f"抽奖1")
+
     response = s.get(url2,headers=headers)
     if ("errorCode" in response.text):
         print(response.text)
-    else:
-        description = response.json()['description']
+    elif ("description" in response.text):
+        responseJson = response.json();
+        description = responseJson['description']
         print(f"抽奖获得{description}")
+    else:
+        print(f"抽奖2")
 
 BI_RM = list("0123456789abcdefghijklmnopqrstuvwxyz")
 def int2char(a):
@@ -130,4 +137,3 @@ def login(username, password):
 
 if __name__ == "__main__":
     main()
-
